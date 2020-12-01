@@ -1,0 +1,57 @@
+%% NA 492 Lab 3
+
+clear all
+close
+clc
+
+
+%% Center of Pressure Lp
+B = 254;
+
+TP391_Lp=cell(1,16);
+TP391_Lm=cell(1,16);
+TP391_lambda_w=cell(1,16);
+TP391_Fb = {0.50,1.00,1.25,1.50,1.75,1.75,2.00,2.25,2.50,2.50,2.75,3.00,3.25,3.50,3.50,3.75};
+TP391_Lk = readmatrix('wetted.xls','Range','M21:M36');
+TP391_Lc = readmatrix('wetted.xls','Range','N21:N36');
+for j = 1:numel(TP391_Lk)
+    
+      TP391_lambda_w{j} = (TP391_Lc(j) + TP391_Lk(j))/(2*B);  
+   
+      TP391_Lm{j} = (TP391_Lc(j) + TP391_Lk(j))/2;
+      
+      TP391_Lp{j} = TP391_Lm{j}*(0.75 - (1/((5.21*(TP391_Fb{j})^2/(TP391_lambda_w{j})^2 + 2.39))));
+    
+end
+
+TP331_Lp=cell(1,4);
+TP331_Lm=cell(1,4);
+TP331_lambda_w=cell(1,4);
+TP331_Fb = {2.00,2.75,3.50,3.50};
+TP331_Lk = {743.33,660,663.33,665};
+TP331_Lc = {765,670,621.67,620};
+for j = 1:numel(TP331_Lk)
+    
+      TP331_lambda_w{j} = (TP331_Lc{j} + TP331_Lk{j})/(2*B);  
+   
+      TP331_Lm{j} = (TP331_Lc{j} + TP331_Lk{j})/2;
+      
+      TP331_Lp{j} = TP331_Lm{j}*(0.75 - (1/((5.21*(TP331_Fb{j})^2/(TP331_lambda_w{j})^2 + 2.39))));
+    
+end
+
+TP451_Lp=cell(1,4);
+TP451_Lm=cell(1,4);
+TP451_lambda_w=cell(1,4);
+TP451_Fb = {2.00,2.75,3.50,3.50};
+TP451_Lk = {840,715,710,710};
+TP451_Lc = {843.33,710,653.33,658.33};
+for j = 1:numel(TP451_Lk)
+    
+      TP451_lambda_w{j} = (TP451_Lc{j} + TP451_Lk{j})/(2*B);  
+   
+      TP451_Lm{j} = (TP451_Lc{j} + TP451_Lk{j})/2;
+      
+      TP451_Lp{j} = TP451_Lm{j}*(0.75 - (1/((5.21*(TP451_Fb{j})^2/(TP451_lambda_w{j})^2 + 2.39))));
+    
+end
