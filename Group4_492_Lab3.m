@@ -33,12 +33,12 @@ subplot(2,1,2);
 plot(t375,Df375);
 
 figure();
-[t4375,D4375,P4375,R4375,H4375]=ReadIn3('TowPoint_451_BeamFr_3.75_Run7.csv');
-Df4375=filterfilter(D4375,length(D4375),100,.75,3);
+[t,D,P,R4,H]=ReadIn3('TowPoint_451_BeamFr_3.75_Run7.csv');
+Df4375=filterfilter(D,length(D),100,.75,3);
 subplot(2,1,1);
-plot(t4375,D4375);
+plot(t,D);
 subplot(2,1,2);
-plot(t4375,Df4375);
+plot(t,Df4375);
 
 
 % NOTE: Attempting to come up with changepts function, however isseu occurs
@@ -135,5 +135,17 @@ legend('0 Degrees Beta', '10 Degrees Beta', '20 Degrees Beta', 'Location', 'Nort
 
 
 
+%%
 
-
+[t,D,P,R,H]=ReadIn3('TowPoint_391_BeamFr_3.75_Run24.csv');
+Df=filterfilter(D,length(D),100,.75,3);
+subplot(2,1,1);
+plot(t,D);
+subplot(2,1,2);
+plot(t,Df);
+Pf=filterfilter(P,length(P),100,.75,3);
+Rf=filterfilter(R,length(R),100,.75,3);
+Hf=filterfilter(H,length(H),100,.75,3);
+mean(Df(2200:2300))
+mean(Pf(2200:2300))
+mean(Hf(2200:2300))
